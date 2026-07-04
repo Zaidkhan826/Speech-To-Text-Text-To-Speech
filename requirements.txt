@@ -1,4 +1,5 @@
 Flask
+gunicorn
 SpeechRecognition
 pyttsx3
 pydub
