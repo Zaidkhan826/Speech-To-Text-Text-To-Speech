@@ -25,24 +25,24 @@ function startListening() {
 function convertText() {
     const text = textInput.value;
 
-    fetch("/text-to-speech", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text: text })
-    })
-    .then(res => res.json())
-    .then(data => {
-        if (data.audio_url) {
-            audioPlayer.src = data.audio_url;
-            audioPlayer.play();
+    if (!text.trim()) return;
 
-            robotFace.style.boxShadow = "0 0 120px cyan";
+    const speech = new SpeechSynthesisUtterance(text);
 
-            setTimeout(() => {
-                robotFace.style.boxShadow = "0 0 60px cyan";
-            }, 3000);
-        }
-    });
+    speech.lang = "en-US";
+    speech.rate = 1;
+    speech.pitch = 1;
+    speech.volume = 1;
+
+    speech.onstart = () => {
+        robotFace.style.boxShadow = "0 0 120px cyan";
+    };
+
+    speech.onend = () => {
+        robotFace.style.boxShadow = "0 0 60px cyan";
+    };
+
+    window.speechSynthesis.speak(speech);
 }
 if(navigator.geolocation){
     navigator.geolocation.getCurrentPosition(position=>{
