@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ZAID - Advanced AI Avatar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<!-- ================= TOP BAR ================= -->
+<div class="top-bar">
+    <div class="logo">🤖 ZAID AI</div>
+
+    <div class="top-right">
+        <div class="datetime" id="datetime"></div>
+        <button id="themeToggle" class="toggle-btn">🌙</button>
+    </div>
+</div>
+
+<!-- ================= MAIN CONTAINER ================= -->
+<div class="avatar-container">
+
+    <!-- WEATHER PANEL -->
+    <div class="weather-panel">
+        <h3>🌍 Location & Weather</h3>
+        <p id="locationInfo">Detecting location...</p>
+    </div>
+
+    <!-- AVATAR -->
+    <div class="avatar-head">
+
+        <div class="avatar-glow"></div>
+
+        <div class="avatar-face">
+            <div class="avatar-eyes">
+                <div class="eye left-eye"><div class="iris"></div></div>
+                <div class="eye right-eye"><div class="iris"></div></div>
+            </div>
+            <div class="avatar-mouth"></div>
+        </div>
+
+        <div class="status-indicator">
+            <span class="dot"></span> SYSTEM ONLINE
+        </div>
+
+    </div>
+
+    <h1>ZAID</h1>
+    <p class="subtitle">Next-Gen Speech AI Interface</p>
+
+    <!-- CONTROL PANEL -->
+    <div class="control-panel">
+
+        <textarea id="textInput" placeholder="Speak or type here..."></textarea>
+
+        <div class="buttons">
+            <button class="neo-btn" onclick="startListening()">🎤 Speak</button>
+            <button class="neo-btn" onclick="convertText()">🔊 Convert</button>
+        </div>
+
+        <div class="voice-wave" id="voiceWave"></div>
+
+        <audio id="audioPlayer" controls></audio>
+
+    </div>
+
+    <!-- INFO CARDS -->
+    <div class="info-section">
+
+        <div class="info-card">
+            <h3>🎙 Speech Recognition</h3>
+            <p>Real-time voice to text processing system.</p>
+        </div>
+
+        <div class="info-card">
+            <h3>🔊 Text To Speech</h3>
+            <p>Natural voice output engine integration.</p>
+        </div>
+
+        <div class="info-card">
+            <h3>⚡ Smart Interface</h3>
+            <p>Futuristic AI avatar with interactive animations.</p>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    ZAID AI Assistant © 2026 | Developed with Flask + Python
+</div>
+
+<!-- DATE TIME SCRIPT -->
+<script>
+function updateDateTime(){
+    const now = new Date();
+    document.getElementById("datetime").innerHTML =
+        now.toDateString() + " | " + now.toLocaleTimeString();
+}
+setInterval(updateDateTime,1000);
+updateDateTime();
+</script>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

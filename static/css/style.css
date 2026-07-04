@@ -1,0 +1,315 @@
+/* =========================
+   GLOBAL SETTINGS
+========================= */
+body{
+    margin:0;
+    padding:0;
+    font-family: 'Orbitron', sans-serif;
+    background: radial-gradient(circle at center,#0a0f1f,#000);
+    color:#00f0ff;
+    text-align:center;
+    overflow-y:auto;
+    scroll-behavior:smooth;
+    min-height:100vh;
+}
+
+/* Custom Scroll */
+::-webkit-scrollbar{
+    width:8px;
+}
+::-webkit-scrollbar-track{
+    background:#0a0a0a;
+}
+::-webkit-scrollbar-thumb{
+    background:#00f0ff;
+    border-radius:10px;
+}
+
+/* =========================
+   TOP BAR
+========================= */
+.top-bar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 40px;
+    background:rgba(0,0,0,0.6);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid #00f0ff;
+}
+
+.logo{
+    font-size:20px;
+    font-weight:bold;
+}
+
+.datetime{
+    font-size:14px;
+}
+
+.toggle-btn{
+    background:none;
+    border:1px solid #00f0ff;
+    padding:6px 14px;
+    border-radius:20px;
+    color:#00f0ff;
+    cursor:pointer;
+}
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+.avatar-container{
+    margin-top:60px;
+    padding-bottom:80px;
+}
+
+/* =========================
+   3D AVATAR HEAD
+========================= */
+.avatar-head{
+    position:relative;
+    width:260px;
+    height:320px;
+    margin:40px auto;
+    perspective:1000px;
+}
+
+.avatar-glow{
+    position:absolute;
+    width:260px;
+    height:320px;
+    background: radial-gradient(circle,#00f0ff33,transparent);
+    border-radius:130px;
+    filter: blur(40px);
+}
+
+/* Rotating Face */
+.avatar-face{
+    position:absolute;
+    width:200px;
+    height:260px;
+    top:30px;
+    left:30px;
+    background:#0e1528;
+    border-radius:120px;
+    border:2px solid #00f0ff;
+    box-shadow:0 0 40px #00f0ff;
+    transform-style:preserve-3d;
+    animation:rotate3D 10s linear infinite;
+}
+
+/* 3D Rotation */
+@keyframes rotate3D{
+    0%{transform:rotateY(0deg);}
+    100%{transform:rotateY(360deg);}
+}
+
+/* =========================
+   EYES
+========================= */
+.avatar-eyes{
+    position:absolute;
+    top:70px;
+    width:100%;
+}
+
+.eye{
+    width:50px;
+    height:50px;
+    background:#001f2f;
+    border-radius:50%;
+    position:absolute;
+    border:2px solid #00f0ff;
+    overflow:hidden;
+}
+
+.left-eye{ left:30px; }
+.right-eye{ right:30px; }
+
+.iris{
+    width:20px;
+    height:20px;
+    background:#00f0ff;
+    border-radius:50%;
+    position:absolute;
+    top:15px;
+    left:15px;
+    animation:eyeMove 4s infinite;
+    box-shadow:0 0 15px #00f0ff;
+}
+
+@keyframes eyeMove{
+    0%,100%{transform:translate(0,0);}
+    25%{transform:translate(5px,3px);}
+    50%{transform:translate(-5px,-3px);}
+    75%{transform:translate(3px,-5px);}
+}
+
+/* =========================
+   MOUTH
+========================= */
+.avatar-mouth{
+    position:absolute;
+    bottom:60px;
+    left:50%;
+    transform:translateX(-50%);
+    width:90px;
+    height:8px;
+    background:#00f0ff;
+    border-radius:10px;
+    box-shadow:0 0 15px #00f0ff;
+    animation:talk 2s infinite;
+}
+
+@keyframes talk{
+    0%,100%{height:8px;}
+    50%{height:20px;}
+}
+
+/* =========================
+   STATUS INDICATOR
+========================= */
+.status-indicator{
+    position:absolute;
+    bottom:-30px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:12px;
+    color:#00ff88;
+}
+
+.dot{
+    height:8px;
+    width:8px;
+    background:#00ff88;
+    border-radius:50%;
+    display:inline-block;
+    margin-right:5px;
+    animation:blinkStatus 1.5s infinite;
+}
+
+@keyframes blinkStatus{
+    0%,100%{opacity:1;}
+    50%{opacity:0.3;}
+}
+
+/* =========================
+   CONTROL PANEL
+========================= */
+.control-panel{
+    margin-top:50px;
+}
+
+textarea{
+    width:60%;
+    max-width:700px;
+    height:120px;
+    background:#0e1528;
+    border:1px solid #00f0ff;
+    color:#00f0ff;
+    padding:15px;
+    font-size:16px;
+    border-radius:10px;
+}
+
+.buttons{
+    margin-top:20px;
+}
+
+.neo-btn{
+    padding:12px 30px;
+    margin:10px;
+    border:1px solid #00f0ff;
+    background:transparent;
+    color:#00f0ff;
+    cursor:pointer;
+    transition:0.3s;
+    border-radius:30px;
+}
+
+.neo-btn:hover{
+    background:#00f0ff;
+    color:black;
+    box-shadow:0 0 25px #00f0ff;
+}
+
+/* =========================
+   WEATHER PANEL
+========================= */
+.weather-panel{
+    margin:60px auto;
+    width:60%;
+    max-width:600px;
+    padding:20px;
+    border:1px solid #00f0ff55;
+    border-radius:15px;
+    background:rgba(0,0,0,0.4);
+    backdrop-filter:blur(10px);
+}
+
+/* =========================
+   INFO CARDS
+========================= */
+.info-section{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    margin-top:60px;
+    flex-wrap:wrap;
+}
+
+.info-card{
+    width:260px;
+    padding:25px;
+    background:rgba(0,0,0,0.6);
+    border:1px solid #00f0ff;
+    border-radius:15px;
+    box-shadow:0 0 20px #00f0ff33;
+    transition:0.3s;
+}
+
+.info-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 30px #00f0ff;
+}
+
+/* =========================
+   FOOTER
+========================= */
+.footer{
+    margin-top:80px;
+    padding:20px;
+    font-size:16px;
+    opacity:0.6;
+    border-top:1px solid #00f0ff33;
+}
+
+/* =========================
+   LIGHT MODE
+========================= */
+.light-mode{
+    background:#f5f5f5;
+    color:#111;
+}
+
+.light-mode .top-bar{
+    background:#ffffffcc;
+}
+
+.light-mode textarea{
+    background:#ffffff;
+    color:#111;
+    border:1px solid #111;
+}
+
+.light-mode .info-card{
+    background:#ffffff;
+    color:#111;
+    border:1px solid #111;
+}
+.top-right{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
