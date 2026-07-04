@@ -3,20 +3,30 @@ const audioPlayer = document.getElementById("audioPlayer");
 const robotFace = document.querySelector(".robot-face");
 
 function startListening() {
+    alert("Speech Recognition Started");
+
     const recognition = new webkitSpeechRecognition();
+
     recognition.lang = "en-US";
 
     recognition.onstart = () => {
-        robotFace.style.boxShadow = "0 0 100px lime";
+        console.log("Listening...");
+        alert("Now Speak");
     };
 
     recognition.onresult = (event) => {
         const transcript = event.results[0][0].transcript;
+        alert("You said: " + transcript);
         textInput.value = transcript;
     };
 
+    recognition.onerror = (event) => {
+        alert("Error: " + event.error);
+        console.log(event.error);
+    };
+
     recognition.onend = () => {
-        robotFace.style.boxShadow = "0 0 60px cyan";
+        alert("Recognition Ended");
     };
 
     recognition.start();
